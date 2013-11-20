@@ -9,7 +9,9 @@ gem 'faraday'
 
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg', group: :production
+gem 'sqlite3', group: [:development, :test]
+gem 'rails_12factor'
 
 gem "twitter-bootstrap-rails"
 
