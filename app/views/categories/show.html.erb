@@ -1,0 +1,13 @@
+<h1> <%= @category.name %></h1>
+
+<% @category.items.each do |item| %>
+    <div class="item-card">
+      <div class="photo"><%= link_to(image_tag(item.photo(:thumb)), item) %> </div>
+      <div class="name"><%= link_to item.name, item %></div>
+      <div class="price"><%= item.price %> руб.</div>
+    </div>
+<% end %>
+
+<div style="clear: both;"></div>
+
+<%= link_to 'Новый товар', new_item_path %>

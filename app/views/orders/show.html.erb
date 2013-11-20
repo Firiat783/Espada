@@ -1,0 +1,30 @@
+Emmet-code:
+(div.well>h1+p+p)+h3+table.table>(thead>tr>th*3)+(tbody>tr>td*3)                 => Tab
+<div class="well">
+  <h1>Order # <%= @order.id %></h1>
+  <p>Total price: <%= @order.price  %></p>
+  <p>Date: <%=  @order.created_at %></p>
+</div>
+
+<h3>Items</h3>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Price for one</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @order.item_orders.each do |item_order|  %>
+      <tr>
+        <td><%= item_order.item.name  %></td>
+        <!--Что то же самое, что и <%= current_users.orders.first.item_orders.first.item.name %> но только для первого товара-->
+        <td><%= item_order.quantity %></td>
+        <td>$ <%= item_order.item.price %></td>
+      </tr>
+  <%  end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', :back, class: 'btn btn-inverse' %>

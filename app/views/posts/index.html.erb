@@ -1,0 +1,9 @@
+<h1>HOBOSTI</h1>
+
+<%= link_to 'Создать новость', new_post_path, class: 'btn btn-primary' %>
+<% @posts.each do |p| %>
+    <h2><%= link_to p.title, p %></h2>
+    <p><%= p.description %></p>
+    <p><%= link_to 'редактировать', edit_post_path(p) %></p>
+    <p><%= link_to 'Удалить', p, method: :delete, confirm: 'Точно?' %></p>
+<%end%>

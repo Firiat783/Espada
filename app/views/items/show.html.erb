@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <%= image_tag @item.photo(:medium) %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @item.price %>
+  руб.
+</p>
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <% if @item.rating %>
+    <%= '%.2f' % @item.rating %>
+  <% else %>
+    ещё нет рейтинга
+  <% end %>
+</p>
+
+<% if signed_in? %>
+
+    <%= simple_form_for @item_user do |f| %>
+      <%= f.input :item_id, as: :hidden %>
+      <%= f.submit 'Добавить в корзину', class: 'btn' %>
+    <% end %>
+<% end %>
+<%= link_to 'Edit', edit_item_path(@item), class: 'btn' %>
+<%= link_to 'Back', items_path, class: 'btn' %>
+
+<h3>Comments</h3>
+
+<%= render 'comments/form' %>
+
+
+
+<% @item.comments.each do |comment| %>
+    <div>
+        <table class="table">
+            <div class="author">
+                <%= comment.name %>
+                <span class="badge badge-success"><%= comment.rating %></span>
+            </div>
+            <div class="message"><%= comment.message %></div>
+        </table>
+    </div>
+<% end %>

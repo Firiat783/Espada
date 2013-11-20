@@ -1,0 +1,14 @@
+<%= simple_form_for(@comment) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :item_id, as: :hidden %>
+    <%= f.input :name %>
+    <%= f.input :message %>
+    <span class="badge badge-success"><%= f.input :rating, collection: [5,4,3,2,1], as: :radio_buttons %></span>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
