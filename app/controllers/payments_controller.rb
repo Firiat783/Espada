@@ -53,7 +53,11 @@ class PaymentsController < ApplicationController
 
       order.update status: 'paid'
 
+
+
       # @todo Также отправить письмо об оплате
+
+
 
     end
 
