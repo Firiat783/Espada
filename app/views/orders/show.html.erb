@@ -19,7 +19,7 @@ Emmet-code:
   <% @order.item_orders.each do |item_order|  %>
       <tr>
         <td><%= item_order.item.name  %></td>
-        <!--Что то же самое, что и <%= current_users.orders.first.item_orders.first.item.name %> но только для первого товара-->
+        <!--Что то же самое, что и <%= current_user.orders.first.item_orders.first.item.name %> но только для первого товара-->
         <td><%= item_order.quantity %></td>
         <td>$ <%= item_order.item.price %></td>
       </tr>
