@@ -31,11 +31,13 @@ class PaymentsController < ApplicationController
 
       # Проверяем e-mail получателя платежа
       if params[:receiver_email] != "luckydance80@gmail.com"
+        raise "bad receiver_email #{params[:receiver_email]} need luckydance80@gmail.com"
         render text: 'OK'
         return
       end
 
       if  params[:txn_type] != 'web_accept'
+        raise "bad txn_type #{params[:txn_type]} need web_accept"
         render text: 'OK'
         return
       end
@@ -44,7 +46,8 @@ class PaymentsController < ApplicationController
       order = Order.find params[:item_number]
 
       # Проверяем сумму
-      if order.price >= params[:mc_gross].to_f || params[:mc_currency] != 'USD'
+      if order.price >= params[:mc_gross].to_f || params[:mc_currency] != 'RUB'
+        raise "ERR PRICE: mc_gross=#{params[:mc_gross].to_f } need #{order.price} OR mc_currency=#{params[:mc_currency]} need RUB"
         render text: 'OK'
         return
       end
@@ -60,7 +63,8 @@ class PaymentsController < ApplicationController
 
       # @todo Также отправить письмо об оплате
 
-
+    else
+      raise "not verified"
 
     end
 

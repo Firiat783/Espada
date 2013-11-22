@@ -7,7 +7,7 @@ gem 'simple_form'
 
 gem 'faraday'
 
- #todo https://github.com/faye/faye-websocket-ruby
+#todo https://github.com/faye/faye-websocket-ruby
 
 
 # Use sqlite3 as the database for Active Record
