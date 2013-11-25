@@ -46,7 +46,7 @@ class PaymentsController < ApplicationController
       order = Order.find params[:item_number]
 
       # Проверяем сумму
-      if order.price >= params[:mc_gross].to_f || params[:mc_currency] != 'RUB'
+      if order.price < params[:mc_gross].to_f || params[:mc_currency] != 'RUB'
         raise "ERR PRICE: mc_gross=#{params[:mc_gross].to_f } need #{order.price} OR mc_currency=#{params[:mc_currency]} need RUB"
         render text: 'OK'
         return
