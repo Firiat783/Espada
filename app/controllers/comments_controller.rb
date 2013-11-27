@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
 
 
   def create
+
+    if verify_recaptcha(:model => @post, :message => "Oh! It's error with reCAPTCHA!") && @post.save
+
+
     @comment = Comment.new(comment_params)
 
     if @comment.save
@@ -38,6 +42,9 @@ class CommentsController < ApplicationController
         redirect_to @comment.item, alert: 'Comment is not created'
     end
 
+       else
+         redirect_to :back , allert: 'Ошибканама'
+       end
 
   end
 

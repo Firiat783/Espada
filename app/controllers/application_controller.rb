@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def define_language
 
     lang = params[:lang]
-    if lag.blank?
+    if lang.blank?
       lang = cookies[:lang]
         if  lang.blank?
           unless request.headers['HTTP_ACCEPT_LANGUAGE'].blank?

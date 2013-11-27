@@ -8,6 +8,8 @@
     <span class="badge badge-success"><%= f.input :rating, collection: [5,4,3,2,1], as: :radio_buttons %></span>
   </div>
 
+    <%= recaptcha_tags display: {theme: 'clean'} %>
+
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
